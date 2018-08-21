@@ -1,0 +1,49 @@
+/* define colors */
+.myPink {
+    color: #de2f64;
+}
+.myYellow {
+    color: #f8ae35;
+}
+.myGreen {
+    color: #51bc51;
+}
+.myBlue {
+    color: #228d97;
+}
+.myPurple {
+    color: #741359;
+}
+
+/* size and color for the navbar brand */
+nav .navbar-brand {
+    font-family: 'Righteous', cursive;
+    font-size: xx-large;
+}
+/* style card for index.html */
+.card {
+    width: 600px;
+    height: 370px;
+    margin: auto;
+    padding: 50px 0px;
+}
+.card-body {
+    padding: 2rem;
+}
+.card-title {
+    padding-bottom: 4rem;
+}
+
+/* style form-control contents */
+main .form-control {
+    display: inline-block;
+    width: auto;
+}
+main {
+    overflow-x: auto;
+    text-align: center;
+}
+/* add padding to the footer */
+.footnote {
+    padding-bottom: 48px;
+}
