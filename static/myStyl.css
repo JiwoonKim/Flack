@@ -15,7 +15,7 @@
     color: #741359;
 }
 
-/* size and color for the navbar brand */
+/* size and color for the navbar brand in index.html */
 nav .navbar-brand {
     font-family: 'Righteous', cursive;
     font-size: xx-large;
@@ -43,7 +43,30 @@ main {
     overflow-x: auto;
     text-align: center;
 }
+
 /* add padding to the footer */
 .footnote {
     padding-bottom: 48px;
+}
+
+/* style sidebar in channel.html */
+.wrapper {
+    width: 100%;
+    font-family: 'Righteous', cursive;
+}
+#sidebar {
+    background-color: #741359;
+}
+.sidebar-header {
+    font-size: xx-large;
+}
+@media (min-width: 768px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 350px auto;
+        height: 100vh;
+    }
+    #sidebar {
+        display: block;
+    }
 }
