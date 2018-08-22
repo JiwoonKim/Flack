@@ -72,9 +72,31 @@ nav .navbar-brand {
     .sidebar-header {
         position: relative;
         top: 4%;
+        margin-bottom: 2rem;
     }
 }
 /* style the main content in channel.html */
 #content {
     text-align: left;
+}
+/* style cards for messages in channel.html */
+.card-message {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+}
+/* style input for new message in channel.html */
+#new-message {
+    width: 70%;
+    height: auto;
+    margin: 10px;
+}
+/* style plus button in channel.html */
+.plus-button {
+    margin: 10px 0px;
+    border: 2px solid lightgrey;
+}
+#plus {
+    font-size: 2.5rem;
+    color: darkgrey;
 }

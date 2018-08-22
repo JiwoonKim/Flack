@@ -13,7 +13,8 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Global variables to store in memory
+# Store channels
+channels = []
 
 
 @app.route("/")
@@ -32,7 +33,14 @@ def index():
 
 @app.route("/channel")
 def channel():
-    return render_template("channel.html")
+    """ Channel list displayed
+        Most recent channel and recent messages are displayed
+        User may create a new channel or send a new message to all """
+
+    # Store display name from session
+    display_name = session.get("display_name")
+
+    return render_template("channel.html", display_name=display_name)
 
 
 @app.route("/signin", methods=["POST"])
