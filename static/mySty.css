@@ -14,7 +14,15 @@
 .myPurple {
     color: #741359;
 }
-
+/* style form-control contents */
+main .form-control {
+    display: inline-block;
+    width: auto;
+}
+main {
+    overflow-x: auto;
+    text-align: center;
+}
 /* size and color for the navbar brand in index.html */
 nav .navbar-brand {
     font-family: 'Righteous', cursive;
@@ -34,16 +42,6 @@ nav .navbar-brand {
     padding-bottom: 4rem;
 }
 
-/* style form-control contents */
-main .form-control {
-    display: inline-block;
-    width: auto;
-}
-main {
-    overflow-x: auto;
-    text-align: center;
-}
-
 /* add padding to the footer */
 .footnote {
     padding-bottom: 48px;
@@ -60,6 +58,8 @@ main {
 .sidebar-header {
     font-size: xx-large;
 }
+/* make sidebar in large screen
+   and horizontal navbar in small screen */
 @media (min-width: 768px) {
     .wrapper {
         display: grid;
@@ -69,4 +69,12 @@ main {
     #sidebar {
         display: block;
     }
+    .sidebar-header {
+        position: relative;
+        top: 4%;
+    }
+}
+/* style the main content in channel.html */
+#content {
+    text-align: left;
 }
