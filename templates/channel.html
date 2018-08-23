@@ -30,16 +30,21 @@
                 </div>
             </nav>
             <main id="content" class="container-fluid p-5">
-                <h3>#Channel 1</h3>
-                <hr>
-                <div class="messages">
+                <div id="content-start">
+                    <h3>#Channel 1</h3>
+                    <hr>
                 </div>
-                <form action="/" method="post" id="message">
-                    <div class="row">
-                        <button class="btn btn-light plus-button" type="submit"><span id="plus">+</span></button>
-                        <textarea autocomplete="off" autofocus id="new-message" class="form-control" name="new-message" placeholder="Write new message" form="message"></textarea>
-                    </div>
-                </form>
+                <div class="content-middle messages" style="height: 80%">
+                    <div></div>
+                </div>
+                <div id="content-end">
+                    <form action="/" method="post" id="message">
+                        <div class="row">
+                            <button class="btn btn-light plus-button" type="submit"><span id="plus">+</span></button>
+                            <textarea autocomplete="off" id="new-message" class="form-control" name="new-message" placeholder="Write new message" form="message"></textarea>
+                        </div>
+                    </form>
+                </div>
             </main>
         </div>
     </body>

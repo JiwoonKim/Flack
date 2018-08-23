@@ -1,0 +1,115 @@
+/* define colors */
+.myPink {
+    color: #de2f64;
+}
+.myYellow {
+    color: #f8ae35;
+}
+.myGreen {
+    color: #51bc51;
+}
+.myBlue {
+    color: #228d97;
+}
+.myPurple {
+    color: #741359;
+}
+/* style form-control contents */
+main .form-control {
+    display: inline-block;
+    width: auto;
+}
+main {
+    overflow-x: auto;
+    text-align: center;
+}
+/* size and color for the navbar brand in index.html */
+nav .navbar-brand {
+    font-family: 'Righteous', cursive;
+    font-size: xx-large;
+}
+/* style card for index.html */
+.card {
+    width: 600px;
+    height: 370px;
+    margin: auto;
+    padding: 50px 0px;
+}
+.card-body {
+    padding: 2rem;
+}
+.card-title {
+    padding-bottom: 4rem;
+}
+
+/* add padding to the footer */
+.footnote {
+    padding-bottom: 48px;
+}
+
+/* style sidebar in channel.html */
+.wrapper {
+    width: 100%;
+    font-family: 'Righteous', cursive;
+}
+#sidebar {
+    background-color: #741359;
+}
+.sidebar-header {
+    font-size: xx-large;
+}
+/* make sidebar in large screen
+   and horizontal navbar in small screen */
+@media (min-width: 768px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 350px auto;
+        height: 100vh;
+    }
+    #sidebar {
+        display: block;
+    }
+    .sidebar-header {
+        position: relative;
+        top: 4%;
+        margin-bottom: 2rem;
+    }
+}
+/* style channel list head */
+.channel-head {
+    color: rgba(255, 255, 255, 5);
+}
+/* style the main content in channel.html */
+#content {
+    text-align: left;
+}
+/* position the contents */
+.content-head {
+
+}
+.content-middle {
+    height: 80%;
+    position: relative;
+    left: 15px;
+}
+.content-foot {
+    position: relative;
+    left: 15px;
+}
+/* style input for new message in channel.html */
+.message-alphabet {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    border-radius: .25rem;
+}
+
+/* style plus button in channel.html */
+.plus-button {
+    margin: 10px 0px;
+    border: 2px solid lightgrey;
+}
+#plus {
+    font-size: 2.5rem;
+    color: darkgrey;
+}
