@@ -58,6 +58,13 @@ nav .navbar-brand {
 .sidebar-header {
     font-size: xx-large;
 }
+#navbar {
+    color: rgba(255,255,255,.5);
+}
+#channel-head {
+    border-bottom: 2px solid rgba(255,255,255,.5);
+    padding-bottom: 12px;
+}
 /* make sidebar in large screen
    and horizontal navbar in small screen */
 @media (min-width: 768px) {
@@ -71,16 +78,19 @@ nav .navbar-brand {
         padding-left: 30px;
     }
     #sidebar-header {
-        position: relative;
-        top: 4%;
-        margin-bottom: 2rem;
+        margin-top: 30px;
+        margin-bottom: 10px;
     }
     #channel-list {
         display: block;
+        height: 75vh;
     }
-    #sidebar-footer {
-
-    }
+}
+/* style the sign out button */
+.signout-btn {
+    background-color: #FDC153;
+    color: black;
+    border: 1px solid #FDC153;
 }
 /* style the main content in channel.html */
 #content {
