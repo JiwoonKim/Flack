@@ -79,15 +79,31 @@ nav .navbar-brand {
 #content {
     text-align: left;
 }
-/* style cards for messages in channel.html */
-.card-message {
-    width: 100%;
-    height: auto;
-    margin: 10px;
+/* style messages in channel.html */
+#content-middle {
+    height: 80%;
+}
+.message-row {
+    flex-wrap: nowrap;
+}
+.message-left {
+    margin-right: 15px;
+}
+.message-alphabet {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #AB2F59;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+.message-right {
+    width: 80%;
 }
 /* style input for new message in channel.html */
 #new-message {
-    width: 70%;
+    width: 80%;
     height: auto;
     margin: 10px;
 }
