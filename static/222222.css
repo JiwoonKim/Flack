@@ -68,11 +68,18 @@ nav .navbar-brand {
     }
     #sidebar {
         display: block;
+        padding-left: 30px;
     }
-    .sidebar-header {
+    #sidebar-header {
         position: relative;
         top: 4%;
         margin-bottom: 2rem;
+    }
+    #channel-list {
+        display: block;
+    }
+    #sidebar-footer {
+
     }
 }
 /* style the main content in channel.html */
