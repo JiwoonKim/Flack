@@ -9,13 +9,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-        <link href="/static/333.css" rel="stylesheet"/>
+        <link href="/static/221.css" rel="stylesheet"/>
         <title>Web50 Flack: Channels</title>
     </head>
     <body class="bg-light">
         <!-- Based on bootstrap-sidebar at bootstrapious.com
              (https://bootstrapious.com/p/bootstrap-sidebar) -->
         <div class="wrapper">
+            <!-- side bar for list of channels -->
             <nav id="sidebar" class="navbar navbar-expand-md navbar-dark border">
                 <div id="sidebar-header">
                     <span class="navbar-brand">{{ display_name }}</span>
@@ -25,21 +26,47 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul id="channel-list" class="navbar-nav mr-auto mt-2">
-                        <h5 id="channel-head">Channels</h5>
-                        <li class="nav-item"><a class="nav-link" href="/">#channel 1</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/">#channel 2</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/">#channel 3</a></li>
+                        <div id="channel-start">
+                            <h5 id="channel-head">Channels</h5>
+                            <!-- new channel button triggers modal to input new channel name -->
+                            <button type="button" class="btn newchannel-btn" data-toggle="modal" data-target="#prompt">+</button>
+                            <!-- Modal (prompt for new channel) -->
+                            <div class="modal fade" id="prompt" tabindex="-1" role="dialog" aria-labelledby="prompt user new channel name" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title">Create new channel</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <input id="newname" autocomplete="off" class="form-control" name="channel-name" type="text" placeholder="#new channel name">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-outline-warning" id="create-newchannel" type="submit">Create Channel</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        {% for channel in channels %}
+                        <li class="nav-item"><a class="nav-link" href="/">{{ channel }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div id="sidebar-footer">
                     <a class="btn btn-outline-warning signout-btn" href="/signout" role="button">signout</a>
                 </div>
             </nav>
+            <!-- content of the channel page where message is diplayed -->
             <main id="content" class="container-fluid p-5">
                 <div id="content-start">
                     <h3>#Channel 1</h3>
                     <hr>
                 </div>
+                <!-- messages displayed by rows -->
                 <div id="content-middle">
                     <div class="row message-row">
                         <div class="message-left d-inline-block">
@@ -60,6 +87,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- user can write new messages -->
                 <div id="content-end">
                     <form action="/" method="post" id="message">
                         <div class="row">
