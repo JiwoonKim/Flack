@@ -50,11 +50,16 @@ def newchannel():
     """ User has clicked button to add new channel
         and prompted for new channel's name """
 
+    # Retrieve new channel name from form
+    name = request.form.get("channel-name")
+
     # Ensure channel name is unique in javascript
 
-    # Add new channel name to session
 
-    session["channels"]
+    # Add new channel name to session
+    session["channels"][name] = {}
+
+    # Update current channel to new channel
 
     return redirect("/channel")
 
