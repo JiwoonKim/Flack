@@ -17,3 +17,4 @@
 
 ## what I learned | 무엇을 배웠는가
 >
+- learned that functions assigned to variables are not hoisted. That is, < const name = () => {} > must come before it is called.

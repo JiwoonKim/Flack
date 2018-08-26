@@ -1,8 +1,5 @@
-// when new channel button is clicked, create new channel
-document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
-
 // function for new channel button clicked
-function createNewChannel() {
+const createNewChannel = () => {
 
     // get input for new channel name
     let channel_input = document.querySelector("#newname");
@@ -24,7 +21,9 @@ function createNewChannel() {
     }
 }
 
+// function to send form with data via post
 const sendForm = (route, object) => {
+
     // create form to send to server via post
     let form = document.createElement("form");
     form.setAttribute("method", "post");
@@ -42,3 +41,6 @@ const sendForm = (route, object) => {
     document.body.appendChild(form);
     form.submit();
 }
+
+// when new channel button is clicked, create new channel
+document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
