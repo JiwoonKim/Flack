@@ -2,7 +2,7 @@
 document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
 
 // function for new channel button clicked
-function createNewChannel() {
+const createNewChannel = () => {
 
     // get input for new channel name
     let channel_input = document.querySelector("#newname");
