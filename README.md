@@ -21,5 +21,7 @@
 - learned that it is important to create an ordered list of things to do in order to make the workflow efficient and not waste a lot of time contemplating on what I should do next.
   (create the ordered list based on the steps the user interface should flow: login -> access channel page/choose channel -> display messages accordingly -> write message -> post message via ajax -> and so)
 - learned how to implement a queue(?) in Python
-- need to have a better understanding of when to use ajax and when to use socketio
-
+- need to have a better understanding of when to use ajax and when to use websockets
+- addEventListener와 inline event(in js file) ex) onclick의 차이점 이해
+- 어쩌면 bootstrap같은 템플렛보다 그냥 css를 적용하는 게 나을지도...(어차피 bootstrap위에서 수정을 하니..) grid와 flexbox도 있겠다...
+- learned websockets are useful when you are broadcasting (not just full duplex communication)

@@ -4,7 +4,6 @@ from flask import Flask, render_template, session, request, redirect
 from flask_socketio import SocketIO, emit
 from flask_session import Session
 
-from helpers import Message
 from collections import deque
 
 app = Flask(__name__)
@@ -81,6 +80,21 @@ def newChannel():
     session["current_channel"] = name
 
     return redirect("/channel")
+
+
+@socketio.on("send message")
+def newMessage(data):
+    """ Broadcast the send message event to all user whenever a new message is submitted """
+    # Retrieve current channel from session
+    current_channel = session["current_channel"]
+
+    # store message into current channels storage (pop oldest message if over 100)
+    if len(session["channels"][current_channel]) >= 100:
+        session["channels"][current_channel].pop()
+    session["channels"][current_channel].appendleft(data)
+
+    # broadcast the new message to the channel for everyone to see
+    emit("new message", data, braodcast=True)
 
 
 @app.route("/signin", methods=["POST"])
