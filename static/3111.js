@@ -42,6 +42,39 @@ const sendForm = (route, object) => {
     form.submit();
 }
 
+// function to create new message and display it
+const displayNewMessage = data => {
+
+    // create div element for row
+    const row = document.createElement('div');
+    row.classList.add("row", "message-row")
+
+    // create elements for left side of message and append them
+    const ml = document.createElement('div');
+    ml.classList.add("message-left", "d-inline-block");
+    row.appendChild(ml);
+    const a = document.createElement('div');
+    a.classList.add("message-alphabet");
+    a.textContent = data.name[0].toUpperCase();;
+    ml.appendChild(a);
+
+    // create elements for right side of message and append them
+    const mr = document.createElement('div');
+    mr.classList.add("message-right", "d-inline-block");
+    row.appendChild(mr);
+    const h5 = document.createElement('h5');
+    h5.classList.add("message-name");
+    h5.textContent = data.name;
+    mr.appendChild(h5);
+    const p = document.createElement('p');
+    p.classList.add("message-text");
+    p.textContent = data.text;
+    mr.appendChild(p);
+
+    // finally, append the row to the content middle
+    document.querySelector("#content-middle").appendChild(row);
+}
+
 // when document is loaded
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -67,37 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // when receiving
-    socket.on('new message', data => {
-
-        // create div element for row
-        const row = document.createElement('div');
-        row.classList.add("row", "message-row")
-
-        // create elements for left side of message and append them
-        const ml = document.createElement('div');
-        ml.classList.add("message-left", "d-inline-block");
-        row.appendChild(ml);
-        const a = document.createElement('div');
-        a.classList.add("message-alphabet");
-        a.textContent = data.name[0].toUpperCase();;
-        ml.appendChild(a);
-
-        // create elements for right side of message and append them
-        const mr = document.createElement('div');
-        mr.classList.add("message-right", "d-inline-block");
-        row.appendChild(mr);
-        const h5 = document.createElement('h5');
-        h5.classList.add("message-name");
-        h5.textContent = data.name;
-        mr.appendChild(h5);
-        const p = document.createElement('p');
-        p.classList.add("message-text");
-        p.textContent = data.text;
-        mr.appendChild(p);
-
-        // finally, append the row to the content middle
-        document.querySelector("#content-middle").appendChild(row);
-    });
-
+    // when new message event is emitted, display the new message on page
+    socket.on('new message', data => displayNewMessage(data));
 });
