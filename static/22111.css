@@ -93,18 +93,28 @@ nav .navbar-brand {
 }
 /* style the new channel button */
 .newchannel-btn {
-    background-color: #D65953;
-    color: lightgrey;
-    border: 2px solid #D65953;
+    background-color: #FDC153;
+    color: black;
+    border: 2px solid #FDC153;
     font-size: 15px;
     margin-left: 10px;
 }
 .newchannel-btn:hover {
-    background-color: #FDC153;
     color: white;
 }
 .modal-header {
     background-color: #741359;
+}
+.nav-link {
+    display: inline-block;
+}
+.channel-delete-btn {
+    display: inline-block;
+    background-color: #D65953;
+    color: lightgrey;
+    border: 2px solid #D65953;
+    border-radius: 5px;
+    font-size: 11px;
 }
 /* style the sign out button */
 .signout-btn, #create-newchannel {

@@ -9,7 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-        <link href="/static/221.css" rel="stylesheet"/>
+        <link href="/static/22111.css" rel="stylesheet"/>
         <title>Web50 Flack: Channels</title>
     </head>
     <body class="bg-light">
@@ -52,7 +52,10 @@
                             </div>
                         </div>
                         {% for channel in channels %}
-                        <li class="nav-item"><a class="nav-link" href="/">#{{ channel }}</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">#{{ channel }}</a>
+                            <button class="channel-delete-btn" data-channel="{{ channel}}">del</button>
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -98,6 +101,6 @@
                 </div>
             </main>
         </div>
-        <script src="/static/21.js" tyoe="text/babel"></script>
+        <script src="/static/211111.js" tyoe="text/babel"></script>
     </body>
 </html>
