@@ -18,3 +18,8 @@
 ## what I learned | 무엇을 배웠는가
 >
 - learned that functions assigned to variables are not hoisted. That is, < const name = () => {} > must come before it is called.
+- learned that it is important to create an ordered list of things to do in order to make the workflow efficient and not waste a lot of time contemplating on what I should do next.
+  (create the ordered list based on the steps the user interface should flow: login -> access channel page/choose channel -> display messages accordingly -> write message -> post message via ajax -> and so)
+- learned how to implement a queue(?) in Python
+- need to have a better understanding of when to use ajax and when to use socketio
+

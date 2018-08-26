@@ -4,6 +4,9 @@ from flask import Flask, render_template, session, request, redirect
 from flask_socketio import SocketIO, emit
 from flask_session import Session
 
+from helpers import Message
+from collections import deque
+
 app = Flask(__name__)
 app.config["SECRET_KEY"] = 'Web50'
 socketio = SocketIO(app)
@@ -42,26 +45,40 @@ def channel():
         session["channels"] = {}
     channels = session["channels"]
 
-    # Retrieve current channel
+    # Retrieve current channel from session
+    if not session.get("channels"):
+        session["current_channel"] = "no channels"
+    current = session["current_channel"]
 
-    return render_template("channel.html", display_name=display_name, channels=channels)
+    return render_template("channel.html", display_name=display_name, channels=channels, current=current)
+
+
+@app.route("/deletechannels")
+def deleteChannel():
+    """ Created delete channels route to delete all channels if needed => temporary function """
+
+    del session["channels"]
+    return redirect("/")
 
 
 @app.route("/newchannel", methods=["POST"])
-def newchannel():
+def newChannel():
     """ User has clicked button to add new channel
-        and prompted for new channel's name """
+        and inputted a new channel's name """
 
     # Retrieve new channel name from form
     name = request.form.get("channel-name")
 
     # Ensure channel name is unique in javascript
 
+    # Create empty deque for channel to store messages
+    channel = deque([])
 
-    # Add new channel name to session
-    session["channels"][name] = {}
+    # Add new channel to session
+    session["channels"][name] = channel
 
     # Update current channel to new channel
+    session["current_channel"] = name
 
     return redirect("/channel")
 
