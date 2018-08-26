@@ -43,4 +43,6 @@ const sendForm = (route, object) => {
 }
 
 // when new channel button is clicked, create new channel
-document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
+});
