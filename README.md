@@ -10,10 +10,10 @@
 -
 - channels and messages are stored as global variables instead of in databases so they will be initialized every time the server restarts.
 - Used different methods of connection between client and server
-- 1) Websockets for persistent connection and broadcasting messages.
-- 2) GET & POST requests and responses (defined in application.py).
+- 1) generally, GET & POST requests and responses (defined in application.py).
 -    + the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
-- 3) Ajax for
+- 2) Websockets for posting new messages because in need of persistent connection (일일이 매번 request 만드는 것 비효율적이기에) and broadcasting messages to all users.
+- 3) Ajax for changing channels because websockets have problem with blockages and ajax is simplier for rest apis. 사실 그냥 post request하고 render entire page가 코드가 적을 수도..? 근데 연습삼아 ajax 사용해볼까...
 
 
 ## 프로젝트 2: 온라인 메세지 서비스
@@ -39,3 +39,4 @@
 - learned that submitting a form by defining its action in javascript does not mean it is ajax.
 - -> get을 하든 post(data를 보냄)를 하든과는 상관없이, ajax과 post request 둘 다 가능.
 - => just because I am sending something to the server by javascript code does not mean it is ajax! Make sure that first, parts of the page have changed instead of entire page, and second it has without without refreshing the page.
+- need to 정리 restful web services의 정의
