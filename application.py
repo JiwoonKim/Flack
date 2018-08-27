@@ -86,6 +86,7 @@ def newChannel():
 @socketio.on("send message")
 def newMessage(data):
     """ Broadcast the send message event to all user whenever a new message is submitted """
+
     # Retrieve current channel from session
     current = session["current"]
 

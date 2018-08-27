@@ -9,6 +9,12 @@
 - Used Python and Flask as the server framerwork.
 -
 - channels and messages are stored as global variables instead of in databases so they will be initialized every time the server restarts.
+- Used different methods of connection between client and server
+- 1) Websockets for persistent connection and broadcasting messages.
+- 2) GET & POST requests and responses (defined in application.py).
+-    + the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
+- 3) Ajax for
+
 
 ## 프로젝트 2: 온라인 메세지 서비스
 - 하버드의 CS50 MOOC(edX)의 Web Programming with Python and JavaScript 수업의 프로젝트 2.
@@ -24,8 +30,12 @@
 - learned how to implement a queue(?) in Python
 - need to have a better understanding of when to use ajax and when to use websockets
 - addEventListener와 inline event(in js file) ex) onclick의 차이점 이해
-- 어쩌면 bootstrap같은 템플렛보다 그냥 css를 적용하는 게 나을지도...(어차피 bootstrap위에서 수정을 하니..) grid와 flexbox도 있겠다...
-- learned websockets are useful when you are broadcasting (not just full duplex communication) -> broadcasting 아닐시에는 사용비효율적인가? ajax랑 websocket같이 쓰면 좀 그런가...(since full duplex가 열려있는데 굳이 또 거기에 request-response를 보내니...ㅠㅜ)
+- starting to think 어쩌면 bootstrap같은 템플렛보다 그냥 css를 적용하는 게 나을지도...(어차피 bootstrap위에서 수정을 하니..) grid와 flexbox도 있겠다...
+- learned websockets are useful when you are broadcasting (not just full duplex communication) -> broadcasting 아닐시에는 사용비효율적인가?
+- ajax랑 websocket 혼합해서 사용가능. websocket은 일일
 - websocket에서 data 보낸 거 json인 것인가? object? 뭐가 다르지ㅠㅜ
 - learned !important in css (?)
 - learned websocket(socketio)에서 반드시 emit을 해야할 필요x
+- learned that submitting a form by defining its action in javascript does not mean it is ajax.
+- -> get을 하든 post(data를 보냄)를 하든과는 상관없이, ajax과 post request 둘 다 가능.
+- => just because I am sending something to the server by javascript code does not mean it is ajax! Make sure that first, parts of the page have changed instead of entire page, and second it has without without refreshing the page.
