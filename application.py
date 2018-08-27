@@ -15,6 +15,11 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# Store channels globally as a dict
+# (instead of sessions so that multiple users can access them)
+channels = {}
+
+
 
 @app.route("/")
 def index():
@@ -40,23 +45,21 @@ def channel():
     display_name = session.get("display_name")
 
     # Retrieve channels from session
-    if session.get("channels") is None:
-        session["channels"] = {}
-    channels = session["channels"]
+    channels_list = channels
 
     # Retrieve current channel from session
-    if not session.get("channels"):
-        session["current_channel"] = "no channels"
+    if not channels:
+        session["current_channel"] = "No channels"
     current = session["current_channel"]
 
-    return render_template("channel.html", display_name=display_name, channels=channels, current=current)
+    return render_template("channel.html", display_name=display_name, channels=channels_list, current=current)
 
 
 @app.route("/deletechannels")
 def deleteChannel():
     """ Created delete channels route to delete all channels if needed => temporary function """
 
-    del session["channels"]
+    del channels
     return redirect("/")
 
 
@@ -74,7 +77,7 @@ def newChannel():
     channel = deque([])
 
     # Add new channel to session
-    session["channels"][name] = channel
+    channels[name] = channel
 
     # Update current channel to new channel
     session["current_channel"] = name
@@ -106,6 +109,9 @@ def signin():
 
     # Store display name via session
     session["display_name"] = request.form.get("displayname")
+
+    # Store current channel to no channesl
+    session["current_channel"]
 
     # Redirect to channel
     return redirect("/channel")

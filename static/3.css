@@ -163,3 +163,7 @@ nav .navbar-brand {
     font-size: 2.5rem;
     color: darkgrey;
 }
+/* style the color of nav-link which is active*/
+.active {
+    color: #F9F871;
+}
