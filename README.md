@@ -25,5 +25,7 @@
 - need to have a better understanding of when to use ajax and when to use websockets
 - addEventListener와 inline event(in js file) ex) onclick의 차이점 이해
 - 어쩌면 bootstrap같은 템플렛보다 그냥 css를 적용하는 게 나을지도...(어차피 bootstrap위에서 수정을 하니..) grid와 flexbox도 있겠다...
-- learned websockets are useful when you are broadcasting (not just full duplex communication)
+- learned websockets are useful when you are broadcasting (not just full duplex communication) -> broadcasting 아닐시에는 사용비효율적인가? ajax랑 websocket같이 쓰면 좀 그런가...(since full duplex가 열려있는데 굳이 또 거기에 request-response를 보내니...ㅠㅜ)
+- websocket에서 data 보낸 거 json인 것인가? object? 뭐가 다르지ㅠㅜ
 - learned !important in css (?)
+- learned websocket(socketio)에서 반드시 emit을 해야할 필요x
