@@ -19,8 +19,6 @@ Session(app)
 # (instead of sessions so that multiple users can access them)
 channels = {}
 
-
-
 @app.route("/")
 def index():
     """ Default route for signing in to Flack
@@ -49,8 +47,8 @@ def channel():
 
     # Retrieve current channel from session
     if not channels:
-        session["current_channel"] = "No channels"
-    current = session["current_channel"]
+        session["current"] = "No channels"
+    current = session["current"]
 
     return render_template("channel.html", display_name=display_name, channels=channels_list, current=current)
 
@@ -59,7 +57,7 @@ def channel():
 def deleteChannel():
     """ Created delete channels route to delete all channels if needed => temporary function """
 
-    del channels
+    channels = {}
     return redirect("/")
 
 
@@ -80,7 +78,7 @@ def newChannel():
     channels[name] = channel
 
     # Update current channel to new channel
-    session["current_channel"] = name
+    session["current"] = name
 
     return redirect("/channel")
 
@@ -89,12 +87,12 @@ def newChannel():
 def newMessage(data):
     """ Broadcast the send message event to all user whenever a new message is submitted """
     # Retrieve current channel from session
-    current_channel = session["current_channel"]
+    current = session["current"]
 
     # store message into current channels storage (pop oldest message if over 100)
-    if len(session["channels"][current_channel]) >= 100:
-        session["channels"][current_channel].pop()
-    session["channels"][current_channel].appendleft(data)
+    if len(channels[current]) >= 100:
+        channels[current].pop()
+    channels[current].appendleft(data)
 
     # broadcast the new message to the channel for everyone to see
     emit("new message", data, braodcast=True)
@@ -110,8 +108,8 @@ def signin():
     # Store display name via session
     session["display_name"] = request.form.get("displayname")
 
-    # Store current channel to no channesl
-    session["current_channel"]
+    # Initialize current channel to no channesl
+    session["current"] ="No channels"
 
     # Redirect to channel
     return redirect("/channel")

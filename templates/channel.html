@@ -53,10 +53,11 @@
                               </div>
                             </div>
                         </div>
+                        <!-- display list of channels -->
                         {% for channel in channels %}
                         <li class="nav-item">
                             <a class="nav-link" href="/">#{{ channel }}</a>
-                            <button class="channel-delete-btn" data-channel="{{ channel}}">del</button>
+                            <button class="channel-delete-btn" data-channel="{{ channel}}">{{ channels[current]|length }}</button>
                         </li>
                         {% endfor %}
                     </ul>
@@ -73,6 +74,19 @@
                 </div>
                 <!-- messages displayed by rows -->
                 <div id="content-middle">
+                    {% if channels[current] is not none %}
+                        {% for message in channels[current] %}
+                            <div class="row message-row">
+                                <div class="message-left d-inline-block">
+                                    <div class="message-alphabet">{{ message["name"][0] }}</div>
+                                </div>
+                                <div class="message-right d-inline-block">
+                                    <h5 class="message-name">{{ message["name"] }}</h5>
+                                    <p class="message-text">{{ message["text"] }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <!-- user can write new messages -->
                 <div id="content-end">
