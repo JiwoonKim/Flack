@@ -108,13 +108,14 @@ nav .navbar-brand {
 .nav-link {
     display: inline-block;
 }
-.channel-delete-btn {
+.message-num {
     display: inline-block;
     background-color: #D65953;
     color: lightgrey;
     border: 2px solid #D65953;
     border-radius: 5px;
     font-size: 11px;
+    padding: 0px 5px
 }
 /* style the sign out button */
 .signout-btn, #create-newchannel {

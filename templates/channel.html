@@ -9,9 +9,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-        <link href="/static/3.css" rel="stylesheet"/>
+        <link href="/static/32.css" rel="stylesheet"/>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-        <script src="/static/3111.js" tyoe="text/babel"></script>
+        <script src="/static/32.js" tyoe="text/babel"></script>
         <title>Web50 Flack: Channels</title>
     </head>
     <body class="bg-light">
@@ -57,7 +57,7 @@
                         {% for channel in channels %}
                         <li class="nav-item">
                             <a class="nav-link" href="/">#{{ channel }}</a>
-                            <button class="channel-delete-btn" data-channel="{{ channel}}">{{ channels[current]|length }}</button>
+                            <span class="message-num">{{ channels[current]|length }}</span>
                         </li>
                         {% endfor %}
                     </ul>
@@ -78,7 +78,7 @@
                         {% for message in channels[current] %}
                             <div class="row message-row">
                                 <div class="message-left d-inline-block">
-                                    <div class="message-alphabet">{{ message["name"][0] }}</div>
+                                    <div class="message-alphabet">{{ message["name"][0].upper() }}</div>
                                 </div>
                                 <div class="message-right d-inline-block">
                                     <h5 class="message-name">{{ message["name"] }}</h5>

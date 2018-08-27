@@ -91,8 +91,8 @@ def newMessage(data):
 
     # store message into current channels storage (pop oldest message if over 100)
     if len(channels[current]) >= 100:
-        channels[current].pop()
-    channels[current].appendleft(data)
+        channels[current].popleft()
+    channels[current].append(data)
 
     # broadcast the new message to the channel for everyone to see
     emit("new message", data, braodcast=True)

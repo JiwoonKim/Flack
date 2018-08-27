@@ -73,6 +73,10 @@ const displayNewMessage = data => {
 
     // finally, append the row to the content middle
     document.querySelector("#content-middle").appendChild(row);
+
+    // update the message number next to channel
+    let num = document.querySelector(".message-num");
+    num.textContent = parseInt(num.textContent) + 1;
 }
 
 // when document is loaded
