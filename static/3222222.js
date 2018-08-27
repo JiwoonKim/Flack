@@ -98,13 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // when the plus button to submit new message is clicked
         document.querySelector(".plus-button").onclick = () => {
 
-            // store the necessary information
-            const name = document.querySelector(".navbar-brand").textContent;
-            const text = document.querySelector("#new-message").value;
-            const timestamp = new Date().toLocaleString()
+            // if there is no channel or no text in textarea, display error message
+            const textbox = document.querySelector("#new-message");
+            const current = document.querySelector("#current-channel").textContent;
+            if (current === "No channels") {
+                textbox.placeholder = "Must create channel first!";
+                textbox.value = "";
+            }
+            else if (textbox.value === "") {
+                textbox.placeholder = "Must enter message to submit!";
+            }
+            else {
+                // store the necessary information
+                const name = document.querySelector(".navbar-brand").textContent;
+                const text = textbox.value;
+                const timestamp = new Date().toLocaleString()
 
-            // emit send message event to server with data
-            socket.emit('send message', {'name': name, 'text': text, 'timestamp': timestamp})
+                // emit message event to server with data
+                socket.emit('send message', {'name': name, 'text': text, 'timestamp': timestamp})
+                textbox.value = "";
+            }
         }
     });
 
