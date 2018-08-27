@@ -165,6 +165,6 @@ nav .navbar-brand {
     color: darkgrey;
 }
 /* style the color of nav-link which is active*/
-.active {
-    color: #F9F871;
+.highlight {
+    color: #F9F871 !important;
 }

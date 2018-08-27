@@ -85,15 +85,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // when new channel button (access via plus button to modal) is clicked, create new channel
     document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
 
-    // when a channel is clicked, change the active component
-
-
-
-    // create socket to allow real-time communication to send and display new messages
+    // create socket to allow real-time communication between client and server
     let socket = io.connect(`${location.protocol}//${document.domain}:${location.port}`);
 
     // when socket is connected
     socket.on('connect', () => {
+
+        // when new channel button (access via plus button to modal) is clicked, create new channel
+
+
+        // when a channel is clicked, change the active component
+        document.querySelectorAll(".nav-link").forEach(channel => {
+            channel.onclick = () => {
+
+                // remove previously highlighted channel
+                document.querySelector(".highlight").classList.remove("highlight")
+                // highlight channel clicked
+                channel.classList.add("highlight");
+            }
+        });
 
         // when the plus button to submit new message is clicked
         document.querySelector(".plus-button").onclick = () => {
