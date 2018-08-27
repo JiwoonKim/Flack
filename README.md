@@ -8,6 +8,7 @@
 - Created an online messaging service similiar to Slack.
 - Used Python and Flask as the server framerwork.
 -
+- channels and messages are stored as global variables instead of in databases so they will be initialized every time the server restarts.
 
 ## 프로젝트 2: 온라인 메세지 서비스
 - 하버드의 CS50 MOOC(edX)의 Web Programming with Python and JavaScript 수업의 프로젝트 2.
