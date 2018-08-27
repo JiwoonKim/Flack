@@ -26,3 +26,4 @@
 - addEventListener와 inline event(in js file) ex) onclick의 차이점 이해
 - 어쩌면 bootstrap같은 템플렛보다 그냥 css를 적용하는 게 나을지도...(어차피 bootstrap위에서 수정을 하니..) grid와 flexbox도 있겠다...
 - learned websockets are useful when you are broadcasting (not just full duplex communication)
+- learned !important in css (?)
