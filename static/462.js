@@ -108,6 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // parse data of messages
                 const data = JSON.parse(request.responseText);
 
+                // first clear the content middle
+                document.querySelector("#content-middle").textContent = "";
+
                 // if data is successful, loop over messages to display in content middle
                 if (data.success) {
                     data.messages.forEach(message => {
@@ -150,12 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             else {
                 // store the necessary information
+                const channel = document.querySelector("#current-channel").textContent.substring(1);
                 const name = document.querySelector(".navbar-brand").textContent;
                 const text = textbox.value;
                 const timestamp = new Date().toLocaleString();
 
                 // emit message event to server with data
-                socket.emit('send message', {'name': name, 'text': text, 'timestamp': timestamp});
+                socket.emit('send message', {'channel': channel, 'message':{'name': name, 'text': text, 'timestamp': timestamp}});
                 textbox.value = "";
             }
         };

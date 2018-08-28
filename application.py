@@ -109,15 +109,16 @@ def newMessage(data):
     """ Broadcast the send message event to all user whenever a new message is submitted """
 
     # Retrieve current channel from session
-    current = session["current"]
+    current = data["channel"]
 
     # store message into current channels storage (pop oldest message if over 100)
+    message = data["message"]
     if len(channels[current]) >= 100:
         channels[current].popleft()
-    channels[current].append(data)
+    channels[current].append(message)
 
     # broadcast the new message to the channel for everyone to see
-    emit("new message", data, braodcast=True)
+    emit("new message", message, braodcast=True)
 
 
 @app.route("/signin", methods=["POST"])
