@@ -64,10 +64,14 @@ def changechannnel():
     # Update the current channel in session
     session["current"] = channel
 
-    # Retrieve messages for the channel
-    messages = channels[channel]
+    # If channel does not exist, return error message
+    if channel not in channels:
+        return jsonify({"success": False})
 
-    return jsonify({"messages": messages})
+    # else, return messages for the channel
+    else:
+        messages = list(channels[channel])
+        return jsonify({"success": True, "messages": messages})
 
 
 @app.route("/deletechannels")

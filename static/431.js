@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // if data is successful, loop over messages to display in content middle
                 if (data.success) {
-                    data.forEach(message => {
+                    data.messages.forEach(message => {
                         displayMessage(message);
                     });
                 }
@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // send ajax request to server with new selected channel as data
             const data = new FormData();
-            data.append('channel', channel.textContent);
+            let new_channel = channel.textContent.substring(1);
+            data.append('channel', new_channel);
             request.send(data);
             return false;
             };
