@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, session, request, redirect
+from flask import Flask, render_template, session, request, redirect, jsonify
 from flask_socketio import SocketIO, emit
 from flask_session import Session
 
@@ -51,6 +51,23 @@ def channel():
     current = session["current"]
 
     return render_template("channel.html", display_name=display_name, channels=channels_list, current=current)
+
+
+@app.route("/changechannel", methods=["POST"])
+def changechannnel():
+    """ User clicked on a channel list and thus, client has sent ajax request
+        (used ajax instead of just a post request so that the sidebar on channel.html has no need to reload """
+
+    # Store the channel name
+    channel = request.form.get("channel")
+
+    # Update the current channel in session
+    session["current"] = channel
+
+    # Retrieve messages for the channel
+    messages = channels[channel]
+
+    return jsonify({"messages": messages})
 
 
 @app.route("/deletechannels")

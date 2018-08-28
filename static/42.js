@@ -19,7 +19,7 @@ const createNewChannel = () => {
         // send form to server via POST
         sendForm("/newchannel", {"channel-name": new_name});
     }
-}
+};
 
 // function to send form with data via post
 const sendForm = (route, object) => {
@@ -35,19 +35,19 @@ const sendForm = (route, object) => {
     let key = Object.keys(object)[0];
     input.setAttribute("name", key);
     input.setAttribute("value", object[key]);
-    form.appendChild(input)
+    form.appendChild(input);
 
     // send form to server
     document.body.appendChild(form);
     form.submit();
-}
+};
 
 // function to create new message and display it
-const displayNewMessage = data => {
+const displayMessage = data => {
 
     // create div element for row
     const row = document.createElement('div');
-    row.classList.add("row", "message-row")
+    row.classList.add("row", "message-row");
 
     // create elements for left side of message and append them
     const ml = document.createElement('div');
@@ -55,7 +55,7 @@ const displayNewMessage = data => {
     row.appendChild(ml);
     const a = document.createElement('div');
     a.classList.add("message-alphabet");
-    a.textContent = data.name[0].toUpperCase();;
+    a.textContent = data.name[0].toUpperCase();
     ml.appendChild(a);
 
     // create elements for right side of message and append them
@@ -77,7 +77,7 @@ const displayNewMessage = data => {
     // update the message number next to channel
     let num = document.querySelector(".message-num");
     num.textContent = parseInt(num.textContent) + 1;
-}
+};
 
 // when document is loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -92,11 +92,40 @@ document.addEventListener('DOMContentLoaded', () => {
         channel.onclick = () => {
 
             // remove previously highlighted channel and highlight new channel clicked
-            document.querySelector(".highlight").classList.remove("highlight")
+            document.querySelector(".highlight").classList.remove("highlight");
             channel.classList.add("highlight");
 
-            // send request to
-            }
+            // change the channel head in contents
+            document.querySelector("#current-channel").textContent = channel.textContent;
+
+            // initialize new ajax request
+            const request = new XMLHttpRequest();
+            request.open('POST', '/changechannel');
+
+            // predefine callback function for when the request completes
+            request.onload = () => {
+
+                // parse data of messages
+                const data = JSON.parse(request.responseText);
+
+                // if data is successful, loop over messages to display in content middle
+                if (data.success) {
+                    data.forEach(message => {
+                        displayMessage(message);
+                    });
+                }
+                // else, display error message in content middle
+                else {
+                    document.querySelector("#content-middle").textContent = "Error";
+                }
+            };
+
+            // send ajax request to server with new selected channel as data
+            const data = new FormData();
+            data.append('channel', channel.textContent);
+            request.send(data);
+            return false;
+            };
         });
 
     // create socket to allow real-time communication between client and server
@@ -104,9 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // when socket is connected
     socket.on('connect', () => {
-
-        // when new channel button (access via plus button to modal) is clicked, create new channel
-
 
         // when the plus button to submit new message is clicked
         document.querySelector(".plus-button").onclick = () => {
@@ -125,15 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // store the necessary information
                 const name = document.querySelector(".navbar-brand").textContent;
                 const text = textbox.value;
-                const timestamp = new Date().toLocaleString()
+                const timestamp = new Date().toLocaleString();
 
                 // emit message event to server with data
-                socket.emit('send message', {'name': name, 'text': text, 'timestamp': timestamp})
+                socket.emit('send message', {'name': name, 'text': text, 'timestamp': timestamp});
                 textbox.value = "";
             }
-        }
+        };
     });
 
     // when new message event is emitted, display the new message on page
-    socket.on('new message', data => displayNewMessage(data));
+    socket.on('new message', data => displayMessage(data));
 });
