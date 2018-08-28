@@ -42,4 +42,4 @@
 - -> get을 하든 post(data를 보냄)를 하든과는 상관없이, ajax과 post request 둘 다 가능.
 - => just because I am sending something to the server by javascript code does not mean it is ajax! Make sure that first, parts of the page have changed instead of entire page, and second it has without without refreshing the page.
 - need to 정리 restful web services의 정의
--
+- flask socketio session is managed differently than flask session. (it forks the Flask user session at the time the client connects to the server over Socket.IO) so any change after socketio is connected is not reflected.
