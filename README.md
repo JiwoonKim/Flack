@@ -34,6 +34,7 @@
 - starting to think 어쩌면 bootstrap같은 템플렛보다 그냥 css를 적용하는 게 나을지도...(어차피 bootstrap위에서 수정을 하니..) grid와 flexbox도 있겠다...
 - learned websockets are useful when you are broadcasting (not just full duplex communication) -> broadcasting 아닐시에는 사용비효율적인가?
 - ajax랑 websocket 혼합해서 사용가능. websocket은 일일
+- websockets and ajax both can partially modify the page (asynchronous 가능)
 - websocket에서 data 보낸 거 json인 것인가? object? 뭐가 다르지ㅠㅜ
 - learned css specificity. Since id has more specificity/priority over class, id in parent elements can override class in child elements. So best to use classes in general than ids. If necessary use !important.
 - learned websocket(socketio)에서 반드시 emit을 해야할 필요x
@@ -41,3 +42,4 @@
 - -> get을 하든 post(data를 보냄)를 하든과는 상관없이, ajax과 post request 둘 다 가능.
 - => just because I am sending something to the server by javascript code does not mean it is ajax! Make sure that first, parts of the page have changed instead of entire page, and second it has without without refreshing the page.
 - need to 정리 restful web services의 정의
+-
