@@ -14,6 +14,7 @@
 -    + the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
 - 2) Websockets for posting new messages because in need of persistent connection (일일이 매번 request 만드는 것 비효율적이기에) and broadcasting messages to all users.
 - 3) Ajax for changing channels because websockets have problem with blockages and ajax is simplier for rest apis. 사실 그냥 post request하고 render entire page가 코드가 적을 수도..? 근데 연습삼아 ajax 사용해볼까...
+-    -> ajax so that sidebar remains while the main content part of page만 바뀜
 
 
 ## 프로젝트 2: 온라인 메세지 서비스
@@ -34,7 +35,7 @@
 - learned websockets are useful when you are broadcasting (not just full duplex communication) -> broadcasting 아닐시에는 사용비효율적인가?
 - ajax랑 websocket 혼합해서 사용가능. websocket은 일일
 - websocket에서 data 보낸 거 json인 것인가? object? 뭐가 다르지ㅠㅜ
-- learned !important in css (?)
+- learned css specificity. Since id has more specificity/priority over class, id in parent elements can override class in child elements. So best to use classes in general than ids. If necessary use !important.
 - learned websocket(socketio)에서 반드시 emit을 해야할 필요x
 - learned that submitting a form by defining its action in javascript does not mean it is ajax.
 - -> get을 하든 post(data를 보냄)를 하든과는 상관없이, ajax과 post request 둘 다 가능.

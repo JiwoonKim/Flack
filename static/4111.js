@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".highlight").classList.remove("highlight")
             channel.classList.add("highlight");
 
-            //
+            // send request to
             }
         });
 
