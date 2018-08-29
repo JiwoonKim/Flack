@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const channel = document.querySelector("#current-channel").textContent.substring(1);
                 const name = document.querySelector(".navbar-brand").textContent;
                 const text = textbox.value;
-                const timestamp = new Date().toLocaleString();
+                const timestamp = new Date().toString().substring(0, 15);
 
                 // emit message event to server with data
                 socket.emit('send message', {'channel': channel, 'message':{'name': name, 'text': text, 'timestamp': timestamp}});

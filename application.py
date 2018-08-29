@@ -110,7 +110,7 @@ def newMessage(data):
 
     # Store message into current channels storage (pop oldest message if over 100)
     message = data["message"]
-    if len(channels[current]) >= 100:
+    if len(channels[current]) >= 10:
         channels[current].popleft()
     channels[current].append(message)
 

@@ -149,6 +149,10 @@ nav .navbar-brand {
 .message-right {
     width: 80%;
 }
+.message-timestamp {
+    color: #F18B4E;
+    font-size: 12px;
+}
 /* style input for new message in channel.html */
 #new-message {
     width: 80%;
