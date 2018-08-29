@@ -89,10 +89,10 @@ nav .navbar-brand {
     #channel-list {
         display: block;
         height: 75vh;
+        width: 90%;
     }
     .list {
         height: 67vh;
-        overflow-y: scroll;
     }
 }
 /* style the new channel button */
