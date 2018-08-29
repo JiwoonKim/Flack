@@ -152,6 +152,7 @@ nav .navbar-brand {
 .message-timestamp {
     color: #F18B4E;
     font-size: 12px;
+    padding-left: .5rem;
 }
 /* style input for new message in channel.html */
 #new-message {

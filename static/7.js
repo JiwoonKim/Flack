@@ -47,6 +47,9 @@ const displayMessage = data => {
     p.classList.add("message-text");
     p.textContent = data.text;
     mr.appendChild(p);
+    const span = document.createElement('span');
+    span.classList.add("message-timestamp");
+    span.textContent = data.timstamp;
 
     // finally, append the row to the content middle
     document.querySelector("#content-middle").appendChild(row);
