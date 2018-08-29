@@ -24,7 +24,7 @@ const displayMessage = data => {
 
     // create div element for row
     const row = document.createElement('div');
-    row.classList.add("row", "message-row");
+    row.classList.add("message-row");
 
     // create elements for left side of message and append them
     const ml = document.createElement('div');
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // when new message event is emitted,
     socket.on('new message', data => {
 
-        // display the new message on page
+        // display the new message on page if user is on the same page
         displayMessage(data.message);
 
         // find the current channel label in sidebar and update the number of messages
