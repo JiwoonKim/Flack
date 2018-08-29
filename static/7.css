@@ -90,6 +90,10 @@ nav .navbar-brand {
         display: block;
         height: 75vh;
     }
+    .list {
+        height: 100%;
+        overflow-y: scroll;
+    }
 }
 /* style the new channel button */
 .newchannel-btn {
@@ -130,6 +134,7 @@ nav .navbar-brand {
 /* style messages in channel.html */
 #content-middle {
     height: 80%;
+    overflow-y: scroll;
 }
 .message-row {
     flex-wrap: nowrap;

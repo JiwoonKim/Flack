@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // if there is no channel or no text in textarea, display error message
             const textbox = document.querySelector("#new-message");
             const current = document.querySelector("#current-channel").textContent;
-            if (current === "No channels") {
+            if (current === "#No channels") {
                 textbox.placeholder = "Must create channel first!";
                 textbox.value = "";
             }
