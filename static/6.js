@@ -8,14 +8,13 @@ const createNewChannel = () => {
     // ensure input for new channel name is submitted
     if (new_name.length === 0) {
         let error = document.createElement('p');
-        error.textContent = "\nEnter new channel name";
+        error.textContent = "Enter new channel name";
         error.style.color = "red";
         document.querySelector(".modal-body").appendChild(error);
         channel_input.value = "";
     }
+    // check if name already exists
     else {
-        // check if name already exists
-
         // send form to server via POST
         sendForm("/newchannel", {"channel-name": new_name});
     }
@@ -73,10 +72,6 @@ const displayMessage = data => {
 
     // finally, append the row to the content middle
     document.querySelector("#content-middle").appendChild(row);
-
-    // update the message number next to channel
-    let num = document.querySelector(".message-num");
-    num.textContent = parseInt(num.textContent) + 1;
 };
 
 // when document is loaded
@@ -111,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // first clear the content middle
                 document.querySelector("#content-middle").textContent = "";
 
-                // if data is successful, loop over messages to display in content middle
+                // if data is successful,
                 if (data.success) {
-                    data.messages.forEach(message => {
-                        displayMessage(message);
-                    });
+
+                    // loop over messages to diplay in the content-middle
+                    data.messages.forEach(message => { displayMessage(message); });
                 }
                 // else, display error message in content middle
                 else {
@@ -129,9 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
             data.append('channel', new_channel);
             request.send(data);
             return false;
-            };
-        });
-
+        };
+    });
     // create socket to allow real-time communication between client and server
     let socket = io.connect(`${location.protocol}//${document.domain}:${location.port}`);
 
@@ -151,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (textbox.value === "") {
                 textbox.placeholder = "Must enter message to submit!";
             }
+            // if the requirements are satisfied,
             else {
                 // store the necessary information
                 const channel = document.querySelector("#current-channel").textContent.substring(1);
@@ -164,7 +159,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     });
+    // when new message event is emitted,
+    socket.on('new message', data => {
 
-    // when new message event is emitted, display the new message on page
-    socket.on('new message', data => displayMessage(data));
+        // display the new message on page
+        displayMessage(data.message);
+
+        // find the current channel label in sidebar and update the number of messages
+        document.querySelectorAll(".nav-link").forEach(channel => {
+            if (channel.textContent.substring(1) === data.current) {
+                channel.parentElement.children[1].textContent = data.size;
+            }
+        });
+    });
 });

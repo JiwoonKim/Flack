@@ -45,9 +45,14 @@ def channel():
     # Retrieve channels from session
     channels_list = channels
 
-    # Retrieve current channel from session
+    # if no channels exist, set current to no channels
     if not channels:
         session["current"] = "No channels"
+    # if channels exist but user has no stored current in session, set it to first channel
+    elif not session["current"]:
+        session["current"] = list(channels.keys())[0]
+
+    # Retrieve current channel
     current = session["current"]
 
     return render_template("channel.html", display_name=display_name, channels=channels_list, current=current)
@@ -72,14 +77,6 @@ def changechannnel():
     else:
         messages = list(channels[channel])
         return jsonify({"success": True, "messages": messages})
-
-
-@app.route("/deletechannels")
-def deleteChannel():
-    """ Created delete channels route to delete all channels if needed => temporary function """
-
-    channels = {}
-    return redirect("/")
 
 
 @app.route("/newchannel", methods=["POST"])
@@ -111,14 +108,17 @@ def newMessage(data):
     # Retrieve current channel from session
     current = data["channel"]
 
-    # store message into current channels storage (pop oldest message if over 100)
+    # Store message into current channels storage (pop oldest message if over 100)
     message = data["message"]
     if len(channels[current]) >= 100:
         channels[current].popleft()
     channels[current].append(message)
 
-    # broadcast the new message to the channel for everyone to see
-    emit("new message", message, braodcast=True)
+    # Retrieve number of messages
+    size = len(channels[current])
+
+    # Broadcast the new message to the channel for everyone to see
+    emit("new message", {"current": current, "message": message, "size": size}, braodcast=True)
 
 
 @app.route("/signin", methods=["POST"])
