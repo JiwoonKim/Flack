@@ -93,6 +93,7 @@ nav .navbar-brand {
     }
     .list {
         height: 67vh;
+        overflow-y: scroll;
     }
 }
 /* style the new channel button */
