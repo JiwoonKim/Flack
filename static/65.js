@@ -52,6 +52,26 @@ const displayMessage = data => {
     document.querySelector("#content-middle").appendChild(row);
 };
 
+// function to display error message when creating new channel
+const error_message = (input, message) => {
+    let error = document.createElement('p');
+    error.textContent = message;
+    error.style.color = "red";
+    document.querySelector(".modal-body").appendChild(error);
+    input.value = "";
+};
+
+// function to check duplicate matchings of channel names
+const matching = (channel_nodes, new_channel) => {
+    let match = false;
+    channel_nodes.forEach(channel => {
+        if (channel.textContent === new_channel) {
+            match = true;
+        }
+    });
+    return match;
+};
+
 // when document is loaded
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -64,21 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ensure input for new channel name is submitted
         if (new_name.length === 0) {
-            let error = document.createElement('p');
-            error.textContent = "Enter new channel name";
-            error.style.color = "red";
-            document.querySelector(".modal-body").appendChild(error);
-            channel_input.value = "";
+            error_message(channel_input, "Enter new channel name");
         }
-        // check if name already exists
-
-
+        // check if name already exists via matching function
+        else if (matching(document.querySelectorAll(".nav-link"), `#${new_name}`)) {
+            error_message(channel_input, "Channel already exists");
+        }
+        // if all is well, send form to server via POST
         else {
-            // send form to server via POST
             sendForm("/newchannel", {"channel-name": new_name});
         }
     });
-
     // add event listener to all channel links in the sidebar
     document.querySelectorAll(".nav-link").forEach(channel => {
 
@@ -105,11 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // first clear the content middle
                 document.querySelector("#content-middle").textContent = "";
 
-                // if data is successful,
+                // if data is successful, loop over messages to diplay in the content-middle
                 if (data.success) {
-
-                    // loop over messages to diplay in the content-middle
-                    data.messages.forEach(message => { displayMessage(message); });
+                    data.messages.forEach(message => {
+                        displayMessage(message);
+                    });
                 }
                 // else, display error message in content middle
                 else {
