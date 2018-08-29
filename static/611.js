@@ -1,25 +1,3 @@
-// function for new channel button clicked
-const createNewChannel = () => {
-
-    // get input for new channel name
-    let channel_input = document.querySelector("#newname");
-    let new_name = channel_input.value;
-
-    // ensure input for new channel name is submitted
-    if (new_name.length === 0) {
-        let error = document.createElement('p');
-        error.textContent = "Enter new channel name";
-        error.style.color = "red";
-        document.querySelector(".modal-body").appendChild(error);
-        channel_input.value = "";
-    }
-    // check if name already exists
-    else {
-        // send form to server via POST
-        sendForm("/newchannel", {"channel-name": new_name});
-    }
-};
-
 // function to send form with data via post
 const sendForm = (route, object) => {
 
@@ -78,7 +56,28 @@ const displayMessage = data => {
 document.addEventListener('DOMContentLoaded', () => {
 
     // when new channel button (access via plus button to modal) is clicked, create new channel
-    document.querySelector("#create-newchannel").addEventListener('click', createNewChannel);
+    document.querySelector("#create-newchannel").addEventListener('click', () => {
+
+        // get input for new channel name
+        let channel_input = document.querySelector("#newname");
+        let new_name = channel_input.value;
+
+        // ensure input for new channel name is submitted
+        if (new_name.length === 0) {
+            let error = document.createElement('p');
+            error.textContent = "Enter new channel name";
+            error.style.color = "red";
+            document.querySelector(".modal-body").appendChild(error);
+            channel_input.value = "";
+        }
+        // check if name already exists
+
+
+        else {
+            // send form to server via POST
+            sendForm("/newchannel", {"channel-name": new_name});
+        }
+    });
 
     // add event listener to all channel links in the sidebar
     document.querySelectorAll(".nav-link").forEach(channel => {
