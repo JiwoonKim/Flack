@@ -151,6 +151,8 @@ nav .navbar-brand {
 }
 .message-row {
     flex-wrap: nowrap;
+    position: relative;
+    left: 15px;
 }
 .message-left {
     margin-right: 15px;
@@ -173,6 +175,10 @@ nav .navbar-brand {
     padding-left: .5rem;
 }
 /* style input for new message in channel.html */
+.new-message-row {
+    position: relative;
+    left: 16px;
+}
 #new-message {
     width: 80%;
     height: auto;

@@ -24,7 +24,7 @@ const displayMessage = data => {
 
     // create div element for row
     const row = document.createElement('div');
-    row.classList.add("message-row");
+    row.classList.add("row", "message-row");
 
     // create elements for left side of message and append them
     const ml = document.createElement('div');

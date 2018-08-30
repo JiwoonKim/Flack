@@ -9,9 +9,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-        <link href="/static/93.css" rel="stylesheet"/>
+        <link href="/static/finalstyle.css" rel="stylesheet"/>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-        <script src="/static/93.js" tyoe="text/babel"></script>
+        <script src="/static/finalstyle.js" tyoe="text/babel"></script>
         <title>Web50 Flack: Channels</title>
     </head>
     <body class="bg-light">
@@ -82,7 +82,7 @@
                 <div id="content-middle">
                     {% if channels[current] is not none %}
                         {% for message in channels[current] %}
-                            <div class="message-row">
+                            <div class="row message-row">
                                 <div class="message-left d-inline-block">
                                     <div class="message-alphabet">{{ message["name"][0].upper() }}</div>
                                 </div>
@@ -96,7 +96,7 @@
                 </div>
                 <!-- user can write new messages -->
                 <div id="content-end">
-                    <div class="row">
+                    <div class="row new-message-row">
                         <button class="btn btn-light plus-button" type="submit"><span id="plus">+</span></button>
                         <textarea autocomplete="off" id="new-message" class="form-control" name="new-message" placeholder="Write new message"></textarea>
                     </div>
