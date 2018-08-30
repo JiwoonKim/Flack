@@ -45,6 +45,10 @@ def channel():
     # Retrieve channels from session
     channels_list = channels
 
+    # If there are no channels, empty session's current value
+    if not channels:
+        session["current"] = "No channels"
+
     # Retrieve current channel
     current = session["current"]
 
