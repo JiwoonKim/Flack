@@ -173,20 +173,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const timestamp = new Date().toString().substring(0, 15);
 
                 // emit message event to server with data
-                socket.emit('send message', {'channel': channel, 'message':{'name': name, 'text': text, 'timestamp': timestamp}});
+                socket.emit('submit message', {'channel': channel, 'message':{'name': name, 'text': text, 'timestamp': timestamp}});
                 textbox.value = "";
             }
         };
     });
     // when new message event is emitted,
-    socket.on('new message', data => {
+    socket.on('announce message', data => {
 
         // display the new message on page if user is on the same page
-        displayMessage(data.message);
+        if (document.querySelector("#current-channel").textContent.substring(1) === data.channel) {
+            displayMessage(data.message);
+        }
 
         // find the current channel label in sidebar and update the number of messages
         document.querySelectorAll(".nav-link").forEach(channel => {
-            if (channel.textContent.substring(1) === data.current) {
+            if (channel.textContent.substring(1) === data.channel) {
                 channel.parentElement.children[1].textContent = data.size;
             }
         });

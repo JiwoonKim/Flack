@@ -101,24 +101,24 @@ def newChannel():
     return redirect("/channel")
 
 
-@socketio.on("send message")
+@socketio.on("submit message")
 def newMessage(data):
     """ Broadcast the send message event to all user whenever a new message is submitted """
 
     # Retrieve current channel from session
-    current = data["channel"]
+    channel = data["channel"]
 
     # Store message into current channels storage (pop oldest message if over 100)
     message = data["message"]
-    if len(channels[current]) >= 10:
-        channels[current].popleft()
-    channels[current].append(message)
+    if len(channels[channel]) >= 10:
+        channels[channel].popleft()
+    channels[channel].append(message)
 
     # Retrieve number of messages
-    size = len(channels[current])
+    size = len(channels[channel])
 
     # Broadcast the new message to the channel for everyone to see
-    emit("new message", {"current": current, "message": message, "size": size}, braodcast=True)
+    emit("announce message", {"channel": channel, "message": message, "size": size}, broadcast=True)
 
 
 @app.route("/signin", methods=["POST"])
