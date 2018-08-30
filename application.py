@@ -45,13 +45,6 @@ def channel():
     # Retrieve channels from session
     channels_list = channels
 
-    # if no channels exist, set current to no channels
-    if not channels:
-        session["current"] = "No channels"
-    # if channels exist but user has no stored current in session, set it to first channel
-    elif not session["current"]:
-        session["current"] = list(channels.keys())[0]
-
     # Retrieve current channel
     current = session["current"]
 
@@ -131,8 +124,15 @@ def signin():
     # Store display name via session
     session["display_name"] = request.form.get("displayname")
 
-    # Initialize current channel to no channesl
-    session["current"] ="No channels"
+    # Initialize current channel to no channels
+
+    # if channels exist but user has no stored current in session, set it to first channel
+
+    # Set current session
+    if not channels:
+        session["current"] = "No channels"
+    else:
+        session["current"] = list(channels.keys())[0]
 
     # Redirect to channel
     return redirect("/channel")
