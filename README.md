@@ -28,7 +28,7 @@
 
 
 ## what I learned | 무엇을 배웠는가
-> This was a bit challenging project because I had to learn and implement http request-responses, ajax, and websockets all together. However, I have learned a lot. Particularly, I learned the importance of implementing an efficient workflow and the difference between REST (http request-responses, ajax; half-duplex) and Websockets (full-duplex) and when to implement them.
+> This was a bit challenging project because I had to learn and implement http request-responses, ajax, and websockets all together. However, I have learned a lot. Particularly, I learned the importance of implementing an efficient workflow and the difference between REST (http request-responses, ajax; half-duplex) and Websockets (full-duplex) and when to implement them. Now, I am starting to feel limited by Flask and think I should move on to a more sophisticated framework for more complex applications.
 - learned that it is important to create an ordered list of things to do so that the workflow is more efficient and I am not wasting a lot of time contemplating on what I should do next. 
 -> create the ordered list based on the steps the user interface should flow.
     - ex. (login -> access channel page/choose channel -> display messages accordingly -> write message -> post message via ajax -> and so)
