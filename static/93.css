@@ -119,6 +119,9 @@ nav .navbar-brand {
 .modal-header {
     background-color: #741359;
 }
+.modal-body .error-message {
+    margin-top: 1rem;
+}
 .nav-link {
     display: inline-block;
 }
@@ -187,4 +190,13 @@ nav .navbar-brand {
 /* style the color of nav-link which is active*/
 .highlight {
     color: #F9F871 !important;
+}
+/* style the size of input and message text for channel.html */
+@media (max-width: 500px) {
+    #new-message {
+        width: 70%;
+    }
+    .message-right {
+        width: 70%;
+    }
 }
