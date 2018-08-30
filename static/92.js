@@ -58,10 +58,20 @@ const displayMessage = data => {
 
 // function to display error message when creating new channel
 const error_message = (input, message) => {
-    let error = document.createElement('p');
-    error.textContent = message;
-    error.style.color = "red";
-    document.querySelector(".modal-body").appendChild(error);
+
+    // if error message does not exist, create an error message
+    if (document.querySelector(".error-message") === null) {
+        let error = document.createElement('p');
+        error.classList.add("error-message");
+        error.textContent = message;
+        error.style.color = "red";
+        document.querySelector(".modal-body").appendChild(error);
+    }
+    // if error message already exists, change the content of the message
+    else {
+        document.querySelector(".error-message").textContent = message;
+    }
+    // empty input
     input.value = "";
 };
 
