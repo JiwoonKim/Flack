@@ -9,7 +9,7 @@
 - Used Python and Flask as the server framerwork.
 - Utilized different methods of connnection between clien and server:
 1) In general, GET & POST requests and responses (defined in application.py).
-  - the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
+    - the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
 2) Websockets for posting new messages in order for persistent connection (because making request everytime is inefficient) and broadcasting messages to all users.
 3) Ajax for changing channels so that the sidebar remains the same while only the main content part is modified. (Websockets have problem with blockages and ajax is simplier for rest apis)
 - For the purpose of focusing on practicing javascript, channels and messages are stored as global variables instead of in databases. For this reason, they will be initialized every time the server restarts.
@@ -31,7 +31,7 @@
 > This was a bit challenging project because I had to learn and implement http request-responses, ajax, and websockets all together. However, I have learned a log. Particularly, I learned the importance of implementing an efficient workflow and the difference between REST (http request-responses, ajax; half-duplex) and Websockets (full-duplex) and when to implement them.
 - learned that it is important to create an ordered list of things to do so that the workflow is more efficient and I am not wasting a lot of time contemplating on what I should do next. 
 -> create the ordered list based on the steps the user interface should flow.
-- ex. (login -> access channel page/choose channel -> display messages accordingly -> write message -> post message via ajax -> and so)
+    - ex. (login -> access channel page/choose channel -> display messages accordingly -> write message -> post message via ajax -> and so)
 - starting to think maybe it is better to just implement css (using grids and flexboxes) instead of using templates like bootstrap since I have to modify them.
 - learned the importance of css specificity. Since id has more specificity/priority over class, id in parent elements can override class in child elements. So best to use classes in general than ids. If necessary use !important.
 - learned that functions assigned to variables are not hoisted. That is, < const name = () => {} > must come before it is called.
