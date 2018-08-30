@@ -42,6 +42,15 @@ nav .navbar-brand {
     padding-bottom: 2rem;
 }
 
+@media (max-width: 500px) {
+    .card {
+        width: 80%;
+    }
+    .index-input {
+        width: 100% !important;
+    }
+}
+
 /* add padding to the footer */
 .footnote {
     padding-bottom: 48px;
