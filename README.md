@@ -35,7 +35,7 @@
 - starting to think maybe it is better to just implement css (using grids and flexboxes) instead of using templates like bootstrap since I have to modify them.
 - learned the importance of css specificity. Since id has more specificity/priority over class, id in parent elements can override class in child elements. So best to use classes in general than ids. If necessary use !important.
 - learned that functions assigned to variables are not hoisted. That is, < const name = () => {} > must come before it is called.
-> learned the different between http requests-responses, ajax, and websockets:
+> learned the differences between http requests-responses, ajax, and websockets:
 1) HTTP request-responses is the most general and easiest way to communication between client and server (one-way). The client sends a request (maybe with some data associated) and the server sends back a response. Ususally, a page is sent back and rendered.
     - On the simplest level, the html file and server code consists this kind of communication. However, Javascript may also be used to send a GET or POST request. For example, you can create a form and send it to the server using Javascript but this is does not mean it is ajax (the method is exactly the same with send a form from the html file).
 2) Ajax is an asynchronous method of communication and is coded via Javascript only. The method is the same with http request-responses between client and server (one-way) but just asynchronous. The differences between the two can be found in that ajax only modifies parts of the page instead of the entire page and thus, does not need to refresh to see modifications. Also in the case of ajax, the server usually sends back data (json) instead of a page.
