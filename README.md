@@ -7,11 +7,11 @@
 - For CS50 Web Programming with Python and JavaScript.
 - Created an online messaging service similiar to Slack.
 - Used Python and Flask as the server framework.
-- Utilized different methods of connnection between clien and server:
+- Utilized different methods of connnection between client and server:
   1) In general, GET & POST requests and responses (defined in application.py).
-    - the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
-2) Websockets for posting new messages in order for persistent connection (because making request everytime is inefficient) and broadcasting messages to all users.
-3) Ajax for changing channels so that the sidebar remains the same while only the main content part is modified. (Websockets have problem with blockages and ajax is simplier for rest apis)
+     -- the javascript function for creating a new channel is not ajax (even though the action is defined in javascript, it is the same as creating a form in html; it submits a form via POST request and then the server sends a response to render the entire page. The function is merely defined in javascript because the form would have to encompass a large portion in the channel.html file if it were to be in the html file.)
+  2) Websockets for posting new messages in order for persistent connection (because making request everytime is inefficient) and broadcasting messages to all users.
+  3) Ajax for changing channels so that the sidebar remains the same while only the main content part is modified. (Websockets have problem with blockages and ajax is simplier for rest apis)
 - For the purpose of focusing on practicing javascript, channels and messages are stored as global variables instead of in databases. For this reason, they will be initialized every time the server restarts.
 
 
@@ -20,10 +20,10 @@
 - Slack과 유사한 온라인 메세지 서비스를 개발.
 - Python과 Flask를 서버 프레임워크로 사용함.
 - 서버와 클라이언트 간 다양한 네트워크 연결을 사용함:
-1. 전반적으로 GET와 POST request와 Response를 사용함.
+  1. 전반적으로 GET와 POST request와 Response를 사용함.
     - 새 채널을 추가하는 기능은 ajax가 아닌 post request에 해당함. (HTML 파일에서 Form을 적용하기보다 자바스크립트 파일에 정의하는 것이 효율적이어서 자바스크립트로 HTML form을 만들어 post request를 보내는 방식을 선택함)
-2. 실시간으로 메세지를 전송하기 위해 웹소켓을 사용함. (지속적인 연결과 다수의 클라이언트에게 방송을 보내는데 효율적)
-3. 채널을 바꿀 때 사이드바를 제외한 콘텐츠만 바뀌기 위해 Ajax를 사용함.
+  2. 실시간으로 메세지를 전송하기 위해 웹소켓을 사용함. (지속적인 연결과 다수의 클라이언트에게 방송을 보내는데 효율적)
+  3. 채널을 바꿀 때 사이드바를 제외한 콘텐츠만 바뀌기 위해 Ajax를 사용함.
 - 자바스크립트에 집중하기 위한 목적으로 채녈과 메세지는 데이터베이스가 아닌 파이썬 서버 내의 범용 변수로 정의되어 있음. 그렇기 때문에 서버가 재시작할 때마다 초기화됨.
 
 
