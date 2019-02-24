@@ -16,7 +16,7 @@
 | /channel |
 :-------------------------:|
 <img src="screenshots/chat.PNG" width="400"> |
-| user can send text messages to channel |
+| user can send text messages in real-time within a channel |
 
 
 - Utilized __different methods of connnection__ between client and server:
@@ -36,7 +36,7 @@
      - 새 채널을 추가하는 기능은 ajax가 아닌 post request에 해당함. (HTML 파일에서 Form을 적용하기보다 자바스크립트 파일에 정의하는 것이 효율적이어서 자바스크립트로 HTML form을 만들어 post request를 보내는 방식을 선택함)
   2. 실시간으로 메세지를 전송하기 위해 `웹소켓`을 사용함. (지속적인 연결과 다수의 클라이언트에게 방송을 보내는데 효율적)
   3. 채널을 바꿀 때 사이드바를 제외한 콘텐츠만 바뀌기 위해 `Ajax`를 사용함.
-- 자바스크립트에 집중하기 위한 목적으로 채녈과 메세지는 데이터베이스가 아닌 파이썬 서버 내의 범용 변수로 정의되어 있음. 그렇기 때문에 서버가 재시작할 때마다 초기화됨.
+- 자바스크립트에 집중하기 위한 목적으로 채널과 메세지는 데이터베이스가 아닌 파이썬 서버 내의 범용 변수로 정의되어 있음. 그렇기 때문에 서버가 재시작할 때마다 초기화됨.
 
 
 ## what I learned | 무엇을 배웠는가
@@ -60,6 +60,5 @@
 + it is okay to use ajax and websockets together. Use them in difference cases where they will be efficiently uses.
 
 - addEventListener와 inline event(in js file) ex) onclick의 차이점 이해
-- websocket에서 data 보낸 거 json인 것인가? object? 뭐가 다르지ㅠㅜ
 
 - Quick notes about Flask-SocketIO: flask socketio session is managed differently from flask session. (it forks the Flask user session at the time the client connects to the server over Socket.IO) so any change after socketio is connected is not reflected into socketio's session. It can be thought as having separate sessions. Also emitting is not a necessity (check flask-socketio documentation for details)
