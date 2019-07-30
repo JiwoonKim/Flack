@@ -1,9 +1,9 @@
-# Flack
+# Flack :speech_balloon:
 > Practicing JavaScript, ajax and websockets in particular, to run single page application.
 
 > Ajax와 웹소켓을 중심으로 자바스크립트를 연습하기 위한 싱글 페이지 웹 애플리케이션 개발.
 
-## Online Messaging Service
+## :speech_balloon: Online Messaging Service
 - For CS50 Web Programming with Python and JavaScript - project 2.
 - Created an online messaging service similiar to Slack.
 - Used Python and `Flask` as the server framework.
@@ -27,7 +27,7 @@
 - For the purpose of focusing on practicing javascript, channels and messages are stored as global variables instead of in databases. For this reason, they will be initialized every time the server restarts.
 
 
-## 온라인 메세지 서비스
+## :speech_balloon: 온라인 메세지 서비스
 - 하버드의 CS50 MOOC(edX)의 Web Programming with Python and JavaScript 수업의 프로젝트 2.
 - Slack과 유사한 온라인 메세지 서비스를 개발.
 - Python과 `Flask`를 서버 프레임워크로 사용함.
@@ -39,7 +39,7 @@
 - 자바스크립트에 집중하기 위한 목적으로 채널과 메세지는 데이터베이스가 아닌 파이썬 서버 내의 범용 변수로 정의되어 있음. 그렇기 때문에 서버가 재시작할 때마다 초기화됨.
 
 
-## what I learned | 무엇을 배웠는가
+## :seedling: what I learned | 무엇을 배웠는가
 > This was a bit challenging project because I had to learn and implement http request-responses, ajax, and websockets all together. 
 
 > However, I have learned a lot. Particularly, I learned the importance of implementing an __efficient workflow__ and the __difference between REST (http request-responses, ajax; half-duplex) and Websockets (full-duplex)__ and when to implement them. 
